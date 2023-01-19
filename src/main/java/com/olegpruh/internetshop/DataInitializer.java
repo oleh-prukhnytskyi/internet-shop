@@ -18,7 +18,7 @@ public class DataInitializer {
     private final ProductImageService productImageService;
     private final RoleService roleService;
     private final DeliveryOptionService deliveryOptionService;
-//    private static final boolean IS_ENABLED = false;
+    private static final boolean IS_ENABLED = false;
 
     @Autowired
     public DataInitializer(UserService userService, ProductService productService,
@@ -31,11 +31,14 @@ public class DataInitializer {
         this.deliveryOptionService = deliveryOptionService;
     }
 
-//    @PostConstruct
+    @PostConstruct
     public void inject() {
 //        if (!IS_ENABLED) {
 //            return;
 //        }
+        if (roleService.getRoleByName(RoleName.USER) != null) {
+            return;
+        }
 
         DeliveryOption freeDelivery = new DeliveryOption();
         freeDelivery.setTitle("FREE Delivery");

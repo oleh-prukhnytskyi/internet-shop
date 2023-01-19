@@ -29,13 +29,12 @@ public class ProfileController {
     private final ProductService productService;
     private final ProductMapper productMapper;
     private final ProductImageService productImageService;
-    private final DataInitializer dataInitializer;
 
     @Autowired
     public ProfileController(WishlistService wishlistService, OrderService orderService,
                              OrderElementService orderElementService, ReviewService reviewService,
                              ProductService productService, ProductMapper productMapper,
-                             ProductImageService productImageService, DataInitializer dataInitializer) {
+                             ProductImageService productImageService) {
         this.wishlistService = wishlistService;
         this.orderService = orderService;
         this.orderElementService = orderElementService;
@@ -43,7 +42,6 @@ public class ProfileController {
         this.productService = productService;
         this.productMapper = productMapper;
         this.productImageService = productImageService;
-        this.dataInitializer = dataInitializer;
     }
 
     @GetMapping
@@ -151,11 +149,5 @@ public class ProfileController {
         product.setImages(productImageService.saveImages(productDto.getImages()));
         productService.add(product);
         return "redirect:/profile/seller";
-    }
-
-    @GetMapping("/admin/inject")
-    public String injectProducts() {
-        dataInitializer.inject();
-        return "redirect:/";
     }
 }
