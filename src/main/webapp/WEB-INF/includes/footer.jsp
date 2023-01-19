@@ -48,7 +48,7 @@
         </div>
     </footer>
 </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/icons.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/fslightbox.js"></script>
