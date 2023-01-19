@@ -1,0 +1,140 @@
+.btn-icon{
+    padding-top: 12px;
+    padding-bottom: 10px;
+}
+.over_link{
+    z-index:3;
+    position:relative;
+}
+body{
+    height: 100%;
+}
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.main{
+    flex: 1 1 auto;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+.box-check input:checked~b i {
+    color: #0d6efd;
+}
+.cutoff-text-2{
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.cutoff-text-3{
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+.cutoff-text-4{
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+.cutoff-text-5{
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
+
+
+
+
+
+
+
+
+.rating-group {
+    display: inline-flex;
+}
+.rating__icon {
+    pointer-events: none;
+}
+.rating__input {
+    position: absolute !important;
+    left: -9999px !important;
+}
+.rating__input--none {
+    display: none
+}
+.rating__label .rating__icon {
+    cursor: pointer;
+    padding: 0 0.1em;
+    font-size: 1.5rem;
+}
+.rating__icon--star {
+    color: #ff8100;
+}
+.rating__input:checked ~ .rating__label .rating__icon--star {
+    color: #D3D3D3;
+}
+.rating-group:hover .rating__label .rating__icon--star {
+    color: #ff8100;
+}
+.rating__input:hover ~ .rating__label .rating__icon--star {
+    color: #D3D3D3;
+}
+.rating-group > .rating__label {
+    width: 20%;
+}
+.remove-icon::after {
+    display: none;
+}
+.btn-dropdown {
+    height: 31px;
+}
+
+
+
+.step:not(:first-child):before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    top: -webkit-calc(-50% + 3px);
+    top: calc(-50% + 3px);
+    height: 50%;
+    left: -2px;
+    background-color: #dee2ed;
+    z-index: -1;
+}
+.step:not(:last-child):after{
+    content: "";
+    position: absolute;
+    width: 2px;
+    top: 3px;
+    height: -webkit-calc(100% + 1rem - 22px);
+    height: calc(100% + 1rem - 22px);
+    left: -2px;
+    background-color: #dee2ed;
+    z-index: -1;
+}
+.step .icon{
+    background-color: #dee2ed;
+}
+.step.active .icon, .step.active:after, .step.active:before{
+    background-color: #0d6efd;
+}
+.img-bg{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 100%;
+}
