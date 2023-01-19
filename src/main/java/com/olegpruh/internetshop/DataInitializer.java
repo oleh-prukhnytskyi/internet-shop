@@ -3,6 +3,7 @@ package com.olegpruh.internetshop;
 import com.olegpruh.internetshop.model.*;
 import com.olegpruh.internetshop.security.RoleName;
 import com.olegpruh.internetshop.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,8 +18,9 @@ public class DataInitializer {
     private final ProductImageService productImageService;
     private final RoleService roleService;
     private final DeliveryOptionService deliveryOptionService;
-    private static final boolean IS_ENABLED = false;
+//    private static final boolean IS_ENABLED = false;
 
+    @Autowired
     public DataInitializer(UserService userService, ProductService productService,
                            ProductImageService productImageService, RoleService roleService,
                            DeliveryOptionService deliveryOptionService) {
@@ -29,11 +31,11 @@ public class DataInitializer {
         this.deliveryOptionService = deliveryOptionService;
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void inject() {
-        if (!IS_ENABLED) {
-            return;
-        }
+//        if (!IS_ENABLED) {
+//            return;
+//        }
 
         DeliveryOption freeDelivery = new DeliveryOption();
         freeDelivery.setTitle("FREE Delivery");

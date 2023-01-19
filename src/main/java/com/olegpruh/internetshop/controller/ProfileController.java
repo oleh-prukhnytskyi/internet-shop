@@ -1,7 +1,7 @@
 package com.olegpruh.internetshop.controller;
 
+import com.olegpruh.internetshop.DataInitializer;
 import com.olegpruh.internetshop.model.Product;
-import com.olegpruh.internetshop.model.ProductImage;
 import com.olegpruh.internetshop.model.dto.ProductDto;
 import com.olegpruh.internetshop.service.*;
 import com.olegpruh.internetshop.service.mapper.ProductMapper;
@@ -9,25 +9,13 @@ import com.olegpruh.internetshop.util.AuthenticationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -41,11 +29,13 @@ public class ProfileController {
     private final ProductService productService;
     private final ProductMapper productMapper;
     private final ProductImageService productImageService;
+    private final DataInitializer dataInitializer;
 
     @Autowired
     public ProfileController(WishlistService wishlistService, OrderService orderService,
                              OrderElementService orderElementService, ReviewService reviewService,
-                             ProductService productService, ProductMapper productMapper, ProductImageService productImageService) {
+                             ProductService productService, ProductMapper productMapper,
+                             ProductImageService productImageService, DataInitializer dataInitializer) {
         this.wishlistService = wishlistService;
         this.orderService = orderService;
         this.orderElementService = orderElementService;
@@ -53,6 +43,7 @@ public class ProfileController {
         this.productService = productService;
         this.productMapper = productMapper;
         this.productImageService = productImageService;
+        this.dataInitializer = dataInitializer;
     }
 
     @GetMapping
@@ -160,5 +151,11 @@ public class ProfileController {
         product.setImages(productImageService.saveImages(productDto.getImages()));
         productService.add(product);
         return "redirect:/profile/seller";
+    }
+
+    @GetMapping("/admin/inject")
+    public String injectProducts() {
+        dataInitializer.inject();
+        return "redirect:/";
     }
 }
